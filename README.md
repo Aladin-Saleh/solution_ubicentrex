@@ -8,7 +8,7 @@ Normalement, vous devez être en possession d'un bout de code en javascript qu'u
 Voici ce que vous avez :
 ```html
 <div style='width: 100%;'>
-<a class='webagdispo_frame' href='https://secure.ubicentrex.net/dispo_medecin.php?n=64078289&nsoc=32802'
+<a class='webagdispo_frame' href='https://secure.ubicentrex.net/dispo_medecin.php?n=xxxxx&nsoc=yyyyy'
 webagcli-id=64078289 webagsoc-id =32802 >Prendre rendez-vous par Internet</a>
 <script type='text/javascript'>// <![CDATA[
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id))
