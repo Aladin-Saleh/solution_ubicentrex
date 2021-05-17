@@ -309,7 +309,7 @@ async function ma_fonction_asynchrone();
 const ma_constante = await ma_fonction_asynchrone();
 ```
 
-Toutefois, notre probleme ne recquiert pas de les utiliser.
+Toutefois, notre probleme ne requiert pas de les utiliser.
 Libre à vous de vous documenter : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/async_function
 
 Si vous avez correctement suivi le guide, voici à quoi devrait ressembler le code : 
