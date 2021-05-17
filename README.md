@@ -1,5 +1,5 @@
 # solution_ubicentrex
-Solution en javascript permettant d'isoler les adresses via le script de base fournit par ubicentrex.
+Solution en javascript permettant d'isoler les adresses via le script de base fournie par ubicentrex.
 
 
 Ce script permet d'isoler les adresses dans le calendrier de prise de rendez-vous.
@@ -78,29 +78,29 @@ Voici le resultat que vous avez sur votre page web avec le code suivant :
 ![Capture d’écran 2021-05-17 093955](https://user-images.githubusercontent.com/67257097/118453118-2773a600-b6f7-11eb-9899-8f71a4906d6e.png)
 
 Comme vous pouvez le voir, le calendrier affiche les creneaux de tout le monde.
-De plus, une liste déroulante donne accès au crénaux de tout le monde.
+De plus, une liste déroulante donne accès aux crénaux de tout le monde.
 Cela ne nous arrange pas pour des raisons de confidentialité (par exemple).
 
-Nous allons donc modifier ce code pour empecher l'accès au crénaux de tout le monde.
-Pour ce faire nous allons : 
+Nous allons donc modifier ce code pour empecher l'accès aux crénaux de tout le monde.
+Pour se faire nous allons : 
 
 -   Supprimer la liste déroulante.
 
--   Ajouter un parametre dans l'url pour chaque adresse.
+-   Ajouter un paramètre dans l'URL pour chaque adresse.
 
 
 ## Supprimer la liste déroulante.
 Il s'agit de l'étape la plus simple.
-Nous allons récuperer les class de la liste déroulante et les rendres invisible via du CSS.
+Nous allons récuperer les classes de la liste déroulante et les rendre invisible via du CSS.
 
 ### Le code CSS : 
 ```CSS
         body,.liste_choix_wrapper,.lspecialite liste_choix,.liste_choix_wrapper,.check-icon-wrapper {display: none;}
 ```
-Pour résumer, ce code permet de ne pas afficher le contenu indiquer sur la page.
+Pour résumer, ce code permet de ne pas afficher le contenu indiqué sur la page.
 Nous allons rendre le body "invisible" pour une raison que nous verrons plus tard.
 
-Vous pouvez copier ce code et l'inserer dans votre page : 
+Vous pouvez copier ce code et l'insérer dans votre page : 
 ```html
 <style>
         body,.liste_choix_wrapper,.lspecialite liste_choix,.liste_choix_wrapper,.check-icon-wrapper {display: none;}
@@ -137,29 +137,29 @@ A ce stade votre code doit ressembler à cela :
 
 
 Il est maintenant temps de nous attaquer au script Javascript.
-Comme dit plus tôt, nous allons passer l'addresse via l'URL en lui indiquant un paramètre.
+Comme ennoncé plus tôt, nous allons passer l'adresse via l'URL en lui indiquant un paramètre.
 
 
-## Récuperer le paramètre (l'addresse) depuis l'URL
+## Récuperer le paramètre (l'adresse) depuis l'URL
 
-Initialement, pour acceder à la page il suffisait d'entrer une URL sans paramètres tel que :
+Initialement, pour accéder à la page il suffisait d'entrer une URL sans paramètre tel que :
 
 ![image](https://user-images.githubusercontent.com/67257097/118457248-dd3ff400-b6f9-11eb-8217-61c20955691d.png)
 
-Notre objectif vas être de récuperer le paramètre fournit dans l'URL pour afficher les crénaux d'une addresse.
-Voila à quoi ressemblera notre ULR : 
+Notre objectif va être de récuperer le paramètre fourni dans l'URL pour afficher les crénaux d'une adresse.
+Voici à quoi ressemblera notre ULR : 
 
 ![image](https://user-images.githubusercontent.com/67257097/118457622-3b6cd700-b6fa-11eb-809b-354b8881956d.png)
 
-Maintenant voyons le code qui vas nous permettre de faire ça.
+Maintenant, voyons le code qui va nous permettre de faire cela.
 Il s'agit d'une fonction qui tient sur 3 lignes.
 
 ```JS 
 document.getElementById("title").innerHTML = new URL(document.location.href).searchParams.get("addresse");
 ```
-Cette ligne permet d'afficher le nom de l'addresse en haut du calendrier
+Cette ligne permet d'afficher le nom de l'adresse en haut du calendrier.
 
-Au préalable on aura déclarer une balise html tel quel : 
+Au préalable on aura déclaré une balise html telle quel : 
 ```html5
     <h3 style="text-align: center;" id="title"></h3>
 ```
@@ -175,10 +175,10 @@ function get_url_settings() {
 
 ## Affichage du  calendrier de crénaux
 
-Maintenant que nous avons récuperer l'addresse via le paramètre dans l'URL, attaquons nous à la partie la plus compliquer du code.
-Nous allons afficher les crénaux de l'addresse dans le calendrier.
+Maintenant que nous avons récuperé l'adresse via le paramètre dans l'URL, attaquons nous à la partie la plus compliquée du code.
+Nous allons afficher les crénaux de l'adresse dans le calendrier.
 
-Voici le code qui vas nous permettre de faire ça : 
+Voici le code qui va nous permettre de faire cela : 
 
 ```JS
 
@@ -206,9 +206,9 @@ Voici le code qui vas nous permettre de faire ça :
             
 ```
             
-Décortiquons ce code qui peut faire peur au premiere abord.
+Décortiquons ce code qui peut faire peur au premier abord.
 
-#### Le code qui permet de vérifier l'existence de l'addresse.
+#### Le code qui permet de vérifier l'existence de l'adresse.
 ```JS
                     const element = document.getElementById("owebagdispopreladr");
                     isFound = false;//boolean
@@ -222,36 +222,36 @@ Décortiquons ce code qui peut faire peur au premiere abord.
                     }
 ```
 
-Nous allons d'abord récuperer l'id de la liste déroulante pour pouvoir interragir avec.
-On la stock dans une constante que l'on appelle element.
-Cela vas nous permettre de rendre notre code plus propre, plus court et plus rapide.
+Nous allons d'abord récuperer l'ID de la liste déroulante pour pouvoir interragir avec cet ID.
+On la stocke dans une constante que l'on appelle "element".
+Cela va nous permettre de rendre notre code plus propre, plus court et plus rapide.
 
 On déclare ensuite un boolean "isFound".
-Ce boolean vas nous permettre de gerer les erreurs.
-De base sa valeur (etat) est définis à false (faux).
+Ce boolean va nous permettre de gérer les erreurs.
+Sa valeur de base (etat) est définie à "false" (faux).
 ```JS
                     const element = document.getElementById("owebagdispopreladr");
                     isFound = false;//boolean
 ```
 
-Un fois les variables et constantes déclarés, on peut créer notre boucle.
-Cette boucle vas récuperer tout les elements de la liste déroulante que nous avons rendu "invisible" plus tôt.
-Elle vas les "lire" et les comparer avec la valeur du paramètre fournit.
-Celle-ci continue de tourner jusqu'a ce que : 
+Une fois les variables et constantes déclarées, on peut créer notre boucle.
+Cette boucle va récuperer tous les éléments de la liste déroulante que nous avons rendue "invisible" plus tôt.
+Elle va les "lire" et les comparer avec la valeur du paramètre fourni.
+Celle-ci continue de tourner jusqu'à ce que : 
 
--   La condition soit remplie, c'est à dire qu'une addresse à été trouvé.
+-   La condition soit remplie, c'est à dire qu'une adresse à été trouvée.
         Dans ce  cas là :
         
-            - On recupere la valeur de la liste 
-            - On fait appelle à une fonction d'ubicentrex qui vas confirmer l'addresse.
-            - On change change la valeur (etat) de notre boolean à true (vrai).
-            - On affiche le calendrier avec les crénaux de l'addresse.
+            - On recupère la valeur de la liste 
+            - On fait appel à une fonction d'ubicentrex qui va confirmer l'adresse.
+            - On change la valeur (etat) de notre boolean à "true" (vrai).
+            - On affiche le calendrier avec les crénaux de l'adresse.
 
--   La condition n'a pas été remplie, c'est à dire qu'aucune addresse n'a été trouvé.
+-   La condition n'a pas été remplie, c'est à dire qu'aucune adresse n'a été trouvée.
         Dans ce cas là : 
         
             - Notre boolean ne change pas d'etat.
-            - Le programme execute le code qui vas gerer l'erreur
+            - Le programme execute le code qui va gérer l'erreur
 
 ```JS
  for (let index = 0; index < document.getElementsByTagName("option").length; index++) {
@@ -264,30 +264,30 @@ Celle-ci continue de tourner jusqu'a ce que :
                     }
 ```
 
-#### Le code qui permet de gerer le cas où le paramètre fournit est incorrect.
+#### Le code qui permet de gérer le cas où le paramètre fourni est incorrect : 
 
 ```JS
 if (!isFound) {
                         document.getElementById("owebagdispoprecadreagd").style.display = "none";
-                        document.body.innerHTML = "<h3 style='text-align: center;'>Il semblerait que l'addresse fournit n'existe pas (ou plus).<br>Veuillez verifier que l'addresse a été ecrite correctement ou contacter l'hébergeur de la plateforme.</h3>"
+                        document.body.innerHTML = "<h3 style='text-align: center;'>Il semblerait que l'adresse fournit n'existe pas (ou plus).<br>Veuillez verifier que l'adresse a été ecrite correctement ou contacter l'hébergeur de la plateforme.</h3>"
                         //Ajouter le lien pour retourner en page d'accueil
                     }
 ```
-Dans le cas ou notre boolean n'a pas changer d'etat (que l'addresse n'existe pas / mal ecrites) un message d'erreur sera afficher sur la page.
+Dans le cas où notre boolean n'a pas changé d'etat (que l'adresse n'existe pas ou bien mal ecrite) un message d'erreur sera affiché sur la page.
 
 ![image](https://user-images.githubusercontent.com/67257097/118462156-ac15f280-b6fe-11eb-9072-d49b008a2078.png)
 
 
 Nous nous approchons de la fin.
-Il ne reste plus que quelque ligne de code à entrer.
-En effet, pour que notre code soit fonctionnelle il faut que nous gérons l'asynchronisme.
+Il ne reste plus que quelques lignes de code à entrer.
+En effet, pour que notre code soit fonctionnel il faut que nous gérions l'asynchronisme.
 ```
 L'asynchronisme désigne le caractère de ce qui ne se passe pas à la même vitesse, que ce soit dans le temps ou dans la vitesse proprement dite, par opposition à un phénomène synchrone.
 ```
 
 ## Gérer l'asynchronisme
 
-Pour gérer l'asynchronisme nous allons inserer la fonction setAddr(addr) que nous venons de créer dans une autre fonction propre au javascript qui vas nous permettre de gerer nos probleme d'asynchronisme.
+Pour gérer l'asynchronisme nous allons insérer la fonction setAddr(addr) que nous venons de créer dans une autre fonction propre au javascript qui va nous permettre de gérer nos problèmes d'asynchronisme.
 
 ```JS
 setTimeout(action_a_executer, delai_execution);
@@ -298,7 +298,7 @@ Voici à quoi devrait ressembler le code :
 setTimeout(() => { setAddr(get_url_settings());}, 2000); 
 ```
 
-Il existe d'autre façons de gerer l'asynchronisme tel que : 
+Il existe d'autres façons de gérer l'asynchronisme tel que : 
 
 Async/Await et les Promise (promesse):
 
@@ -309,7 +309,7 @@ async function ma_fonction_asynchrone();
 const ma_constante = await ma_fonction_asynchrone();
 ```
 
-Toutefois, notre probleme ne requiert pas de les utiliser.
+Toutefois, notre problème ne requiert pas de les utiliser.
 Libre à vous de vous documenter : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/async_function
 
 Si vous avez correctement suivi le guide, voici à quoi devrait ressembler le code : 
@@ -357,7 +357,7 @@ Si vous avez correctement suivi le guide, voici à quoi devrait ressembler le co
                     if (!isFound) {
                         console.log("Not found !");
                         document.getElementById("owebagdispoprecadreagd").style.display = "none";
-                        document.body.innerHTML = "<h3 style='text-align: center;'>Il semblerait que l'addresse fournit n'existe pas (ou plus).<br>Veuillez verifier que l'addresse a été ecrite correctement ou contacter l'hébergeur de la plateforme.</h3>"
+                        document.body.innerHTML = "<h3 style='text-align: center;'>Il semblerait que l'adresse fournit n'existe pas (ou plus).<br>Veuillez verifier que l'addresse a été ecrite correctement ou contacter l'hébergeur de la plateforme.</h3>"
                         //Ajouter le lien pour retourner en page d'accueil
                     }
                 }
@@ -373,7 +373,7 @@ Voici à quoi devrait ressemblait la page web :
 
 
 
-Si vous rencontrer des problèmes, merci de biens vouloir re-lire le guide.
+Si vous rencontrez des problèmes, merci de bien vouloir re-lire le guide.
 
 Aladin SALEH
 
