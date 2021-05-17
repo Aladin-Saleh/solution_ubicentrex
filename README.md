@@ -154,7 +154,9 @@ Voila à quoi ressemblera notre ULR :
 Maintenant voyons le code qui vas nous permettre de faire ça.
 Il s'agit d'une fonction qui tient sur 3 lignes.
 
-```JS document.getElementById("title").innerHTML = new URL(document.location.href).searchParams.get("addresse");```
+```JS 
+document.getElementById("title").innerHTML = new URL(document.location.href).searchParams.get("addresse");
+```
 Cette ligne permet d'afficher le nom de l'addresse en haut du calendrier
 
 Au préalable on aura déclarer une balise html tel quel : 
@@ -366,6 +368,9 @@ Si vous avez correctement suivi le guide, voici à quoi devrait ressembler le co
 Voici à quoi devrait ressemblait la page web : 
 
 ![Capture d’écran 2021-05-17 115218](https://user-images.githubusercontent.com/67257097/118469645-2e55e500-b706-11eb-82c0-413563c4178e.png)
+
+
+
 
 
 Si vous rencontrer des problèmes, merci de biens vouloir re-lire le guide.
