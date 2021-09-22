@@ -373,7 +373,7 @@ Voici à quoi devrait ressemblait la page web :
 
 
 
-Si vous rencontrez des problèmes, merci de bien vouloir re-lire le guide.
+Si vous rencontrez des problèmes, merci de bien vouloir re-lire le guide :) .
 
 Aladin SALEH
 
